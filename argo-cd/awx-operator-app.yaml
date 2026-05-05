@@ -6,15 +6,14 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://ansible-community.github.io/awx-operator-helm/
+    repoURL: https://github.com/ansible/awx-operator.git
     targetRevision: 2.19.1
-    chart: awx-operator
-    helm:
-      parameters:
-        - name: kubeRbacProxy.image.repository
-          value: quay.io/brancz/kube-rbac-proxy
-        - name: kubeRbacProxy.image.tag
-          value: v0.15.0
+    path: config/default
+    kustomize:
+      images:
+        - name: gcr.io/kubebuilder/kube-rbac-proxy
+          newName: quay.io/brancz/kube-rbac-proxy
+          newTag: v0.15.0
   destination:
     server: https://kubernetes.default.svc
     namespace: awx
