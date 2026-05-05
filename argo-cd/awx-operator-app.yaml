@@ -10,11 +10,11 @@ spec:
     targetRevision: 2.19.1
     chart: awx-operator
     helm:
-      values: |
-        kubeRbacProxy:
-          image:
-            repository: quay.io/brancz/kube-rbac-proxy
-            tag: v0.15.0
+      parameters:
+        - name: kubeRbacProxy.image.repository
+          value: quay.io/brancz/kube-rbac-proxy
+        - name: kubeRbacProxy.image.tag
+          value: v0.15.0
   destination:
     server: https://kubernetes.default.svc
     namespace: awx
