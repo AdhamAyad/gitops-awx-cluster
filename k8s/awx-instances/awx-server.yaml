@@ -1,8 +1,0 @@
-apiVersion: awx.ansible.com/v1beta1
-kind: AWX
-metadata:
-  name: awx-server
-  namespace: awx
-spec:
-  service_type: LoadBalancer
-  postgres_storage_class: local-path
